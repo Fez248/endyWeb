@@ -1,0 +1,7 @@
+<div class="flex justify-center gap-6 mr-3 ml-3">
+                    <div class="min-w-[15%]">
+                        <p>Titulo</p>
+                        <p>Lorem ipsc</p>
+                    </div>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/BJfObdsQrxY?si=vljXjGv6PXBo4jN7" allowfullscreen></iframe>
+                </div>
