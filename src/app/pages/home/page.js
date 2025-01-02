@@ -29,11 +29,13 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
-    setCurrentIndex((currentIndex + 1) % videoSnippets.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % videoSnippets.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((currentIndex - 1 + videoSnippets.length) % videoSnippets.length);
+    setCurrentIndex((prevIndex) =>
+      (prevIndex - 1 + videoSnippets.length) % videoSnippets.length
+    );
   };
 
   return (
@@ -69,14 +71,15 @@ export default function Home() {
           <section className="text-center">
             <h2 className="text-4xl font-semibold mb-6">Welcome to The Overthinker’s World</h2>
             <p className="text-lg max-w-2xl mx-auto">
-              Dive into a realm of thoughtful music and artistic expression. Scroll through to explore some of the latest works.
+              Dive into a realm of thoughtful music and artistic expression. Scroll through to
+              explore some of the latest works.
             </p>
           </section>
 
           <section className="mt-10 relative max-w-4xl mx-auto">
-            <div className="overflow-hidden rounded-lg shadow-lg">
+            <div className="overflow-hidden rounded-lg shadow-lg relative">
               <div
-                className="flex transition-transform duration-500"
+                className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
                 {videoSnippets.map((video, index) => (
@@ -103,7 +106,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex justify-between mt-4">
+            <div className="flex justify-between mt-4 absolute top-1/2 -translate-y-1/2 w-full px-4">
               <button
                 onClick={prevSlide}
                 className="p-3 bg-gray-700 rounded-full hover:bg-gray-600 text-white"
