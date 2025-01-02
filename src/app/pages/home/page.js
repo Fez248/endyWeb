@@ -28,16 +28,6 @@ export default function Home() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % videoSnippets.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      (prevIndex - 1 + videoSnippets.length) % videoSnippets.length
-    );
-  };
-
   return (
     <>
       <Head>
@@ -88,34 +78,31 @@ export default function Home() {
             </p>
           </section>
 
-          <section className="mt-10 relative max-w-4xl mx-auto">
-            <div className="overflow-hidden rounded-lg shadow-lg relative">
-              <div className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                {videoSnippets.map((video, index) => (
-                  <div key={index} className="min-w-full h-[450px] flex-shrink-0 relative">
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="absolute inset-0 w-full h-full object-cover rounded-lg"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center">
-                      <div className="text-center text-white px-4">
-                        <h3 className="text-2xl font-semibold mb-2">{video.title}</h3>
-                        <p className="text-gray-300">{video.description}</p>
-                        <Link
-                          href={video.link}
-                          className="text-blue-400 hover:underline mt-4 inline-block">
-                          Watch on YouTube
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+          <section className="mt-10 max-w-4xl mx-auto flex flex-col items-center">
+            <div className="w-full flex">
+              {/* Left Text Section */}
+              <div className="w-1/2 bg-black text-white p-6 flex flex-col justify-center">
+                <h3 className="text-4xl font-bold uppercase mb-4">{videoSnippets[currentIndex].title}</h3>
+                <p className="text-lg text-gray-300">{videoSnippets[currentIndex].description}</p>
+              </div>
+
+              {/* Right Thumbnail Section */}
+              <div className="w-1/2 relative">
+                <img
+                  src={videoSnippets[currentIndex].thumbnail}
+                  alt={videoSnippets[currentIndex].title}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+                <Link
+                  href={videoSnippets[currentIndex].link}
+                  className="absolute bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600"
+                >
+                  Watch on YouTube
+                </Link>
               </div>
             </div>
 
-            {/* Dots navigation */}
+            {/* Dots Navigation */}
             <div className="flex justify-center mt-6 space-x-2">
               {videoSnippets.map((_, index) => (
                 <button
