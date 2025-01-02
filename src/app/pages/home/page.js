@@ -104,10 +104,12 @@ export default function Home() {
             <div className="text-center text-white px-4">
               <h3 className="text-2xl font-semibold mb-2">{video.title}</h3>
               <p className="text-gray-300">{video.description}</p>
-              <Link href={video.link}>
-                <a className="text-blue-400 hover:underline mt-4 inline-block">
+              <Link
+                href={video.link}
+                className="text-blue-400 hover:underline mt-4 inline-block">
+
                   Watch on YouTube
-                </a>
+
               </Link>
             </div>
           </div>
